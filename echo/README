@@ -1,4 +1,4 @@
-ssignment, follow directions.txt
+assignment, follow directions.txt
 
   I. Get a VM host, log in, change password
 
@@ -20,4 +20,11 @@ ssignment, follow directions.txt
   III. Email instructor with your VM host name, your GitHub repo URL
          Instructor will make web page with all students' VMs and GitHub repos
      Email instructor when your server is running on your VM
+
+Lab for class #2:
+   1. In your echo project from last week, the client just sends the
+    string 'Hello world'.  Modify your client to prompt for the string to
+    send.  Test on localhost to confirm that the client receives the same
+    string it sends.  Then run your modified echo client on your server.
+
 

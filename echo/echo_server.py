@@ -19,7 +19,7 @@ backlog = 5
 size = 1024 
 
 # server's listener socket
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # SOCK_STREAM -- TCPIP POTOCAL 
 
 # Release listener socket immediately when program exits, 
 # avoid socket.error: [Errno 48] Address already in use
@@ -31,9 +31,10 @@ print 'echo_server listening on port', port
 s.listen(backlog) 
 
 while True: 
-    client, address = s.accept()
+    client, address = s.accept() #socket is bidirectional: return client socket talking to that client with its address
     data = client.recv(size) 
     if data: 
-        client.send('jenny-liang: %s' % data) 
+        client.send('jenny-liang: %s' % data) # Tell the client which server is connected.
     print 'from %s: %s' % (address, data)
-    client.close()
+    client.close()  # close the connection and wait for another client to talk to another client.
+
