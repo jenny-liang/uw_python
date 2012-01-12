@@ -1,5 +1,7 @@
 assignment1, follow directions.txt
 
+For class #1:
+
   I. Get a VM host, log in, change password
 
   II. Set up GitHub and VM, do echo assignment
@@ -22,4 +24,9 @@ assignment1, follow directions.txt
      Email instructor when your server is running on your VM
 
 
+Lab for class #2:
+   1. In your echo project from last week, the client just sends the
+    string 'Hello world'.  Modify your client to prompt for the string to
+    send.  Test on localhost to confirm that the client receives the same
+    string it sends.  Then run your modified echo client on your server.
 
