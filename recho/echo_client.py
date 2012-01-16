@@ -6,6 +6,7 @@ echo client, usage:
 Both host and port are optional, defaults: localhost 50000
 host must be present if you want to provide port
 """
+import select
 import socket 
 import sys
 
@@ -19,11 +20,10 @@ if nargs > 1:
 if nargs > 2:
     port = int(sys.argv[2])
 
-
-while True:
+while True:        
     s = socket.socket(socket.AF_INET, 
                   socket.SOCK_STREAM) 
-    s.connect((host,port))
+    s.connect((host,port))	    
     data = raw_input("Enter a message to send: ")
     if data == '':
         break
