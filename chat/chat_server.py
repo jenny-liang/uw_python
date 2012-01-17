@@ -36,7 +36,7 @@ print 'echo_server listening on port %s, to exit type return ' % port
 server.listen(backlog)
 
 timeout = 10 # seconds
-input = [server,sys.stdin]
+input = [server]
 running = True
 clientMap = {}
 output = []
@@ -68,19 +68,13 @@ while running:
 	    clients += 1
 	    msg = '\n(Connected: New client (%d) from %s)' % ((clients), getname(client))
             print msg
-        elif s == sys.stdin:
-            # handle standard input
-            junk = sys.stdin.readline()  
-            running = False
-            print 'Input %s from stdin, exiting.' % junk.strip('\n')
-
-        elif s: # client socket
+       elif s: # client socket
             data = s.recv(size)
             print '%s: %s' % (s.getpeername(), data.strip('\n'))
             if data:
 		for o in output:
 		    if s != o:
-	                o.send("%s sends a message to you: %s" %(s.getpeername(), data))                
+	                o.send("%s sends a message to you through Jenny Liang\'s server: %s" %(s.getpeername(), data))                
 	    else:
                 s.close()
                 print 'closed connection'
