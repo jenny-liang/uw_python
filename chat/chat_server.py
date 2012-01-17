@@ -73,8 +73,7 @@ while running:
             print '%s: %s' % (s.getpeername(), data.strip('\n'))
             if data:
 		for o in output:
-		    if s != o:
-	                o.send("%s sends a message to you through Jenny Liang\'s server: %s" %(s.getpeername(), data))                
+		    o.send("%s sends a message to you through Jenny Liang\'s server: %s" %(s.getpeername(), data))                
 	    else:
                 s.close()
                 print 'closed connection'
