@@ -68,7 +68,7 @@ while running:
 	    clients += 1
 	    msg = '\n(Connected: New client (%d) from %s)' % ((clients), getname(client))
             print msg
-       elif s: # client socket
+        elif s: # client socket
             data = s.recv(size)
             print '%s: %s' % (s.getpeername(), data.strip('\n'))
             if data:
