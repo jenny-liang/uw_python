@@ -46,7 +46,8 @@ def getname(client):
         # Return the printable name of the
         # client, given its socket...
         info = clientMap[client]
-        host = info[0]
+        # info is a tuple
+	host = info[0]
         return host
 
 while running:

@@ -13,7 +13,7 @@ import select
 host = 'localhost' 
 port = 50000 
 size = 1024 
-
+#timeout = 60
 nargs = len(sys.argv)
 if nargs > 1:
     host = sys.argv[1]
@@ -28,9 +28,9 @@ quit = False
 
 while not quit: 
     # Wait for input from stdin & socket
-    inputready, outputready,exceptrdy = select.select([0, s], [],[])            
+    inputready, outputready,exceptrdy = select.select([sys.stdin, s], [],[])            
     for i in inputready:
-	if i == 0:
+	if i == sys.stdin:
 	   data = sys.stdin.readline().strip()
 	   if data != '':		        
 	       s.send(data)

@@ -23,7 +23,9 @@ if nargs > 2:
 while True:        
     s = socket.socket(socket.AF_INET, 
                   socket.SOCK_STREAM) 
-    s.connect((host,port))	    
+    s.connect((host,port))
+    print host 
+    print port	    
     data = raw_input("Enter a message to send: ")
     if data == '':
         break
