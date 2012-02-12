@@ -70,8 +70,8 @@ TIME_LINE =\
 """<html>
 <head><title></title></head>
 <body>
-<h1>Here is the time:%s</h1>
-<h1>and again:%s</h1>
+Here is the time:%s<br>
+and again:%s
 </body>
 </html>
 """
