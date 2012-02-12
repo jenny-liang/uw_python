@@ -1,0 +1,39 @@
+The gitHub_downloader_by_api.py is solution for option#2 below.
+
+
+
+Assignment: choose one or both or all three. I suspect 2 is a lot harder, but 
+then you would have learned a lot about the GitHub API and JSON.
+
+1. File downloader using screen scraping: write a script that scrapes
+our Python Winter 2012 course page for the URLs of all the Python
+source files, then downloads them all.
+
+2.  File downloader using web API: same as 1, but find the Python source
+files using the GitHub API.  Hints: you need to look in the repo at
+https://github.com/jon-jacky/uw_python/tree/gh-pages, not the web
+pages.  Git calls the files in a repository "blobs", see the "get all blobs"
+example about halfway down this page: http://develop.github.com/p/object.html
+
+3. Write any web client of your choosing.  The point here is to create
+something that you find interesting or useful -- don't worry about
+using a lot of tools and technique.  When you have something to show,
+post the code on github and email me about it.
+
+
++--
+
+Warning!
+
+
+When testing any automated web client, take care not to overdo it --
+don't overload the server.  In 1. and 2. above, the server is github;
+each run of your program imposes a similar load as cloning the
+repository.  Test your program progressively: first, confirm you are
+scraping the Python URLs correctly before testing any code to download
+them.  Then, test downloading from a local cloned (by hand) copy of
+the repository, using file: urls (not http:).  When that's working,
+try downloading from github.  See the github terms of service at
+http://help.github.com/terms-of-service/
+
+
