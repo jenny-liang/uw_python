@@ -11,12 +11,16 @@ import urllib2
 import os
 import time
 from pprint import pprint
+import json
 
 # this user has several repos. URL here is a GitHub API call
 url = 'http://github.com/api/v2/json/blob/all/jon-jacky/uw_python/gh-pages'
+#handle = urllib2.urlopen(url)
+#data = handle.read()
+#d = eval(data)
+
 handle = urllib2.urlopen(url)
-data = handle.read()
-d = eval(data)
+d = json.load(handle)
 
 if os.path.exists("downloads"):
     os.system("rm -rf downloads")
