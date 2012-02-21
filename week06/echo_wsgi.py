@@ -8,7 +8,6 @@ Based on example in PEP 333, then add path and query processing
 """
 
 import urlparse
-import os
 
 # send one of these pages, depending on URL path
 
@@ -47,9 +46,10 @@ notfound_template = """
 </body>
 </html>
 """
-
+messageSaved=''
 # must be named 'application' to work with our wsgi simple server
 def application(environ, start_response): 
+    global messageSaved
     status = '200 OK'
     response_headers = [('Content_type', 'text/HTML')]
     start_response(status, response_headers)
@@ -60,11 +60,11 @@ def application(environ, start_response):
     elif path == '/echo_wsgi.py':
         # get message from URL query string, parse_qs returns a list for each key
         message = urlparse.parse_qs(environ['QUERY_STRING'])['message'][0]    
-	if "history" not in os.environ:
-            os.environ["history"] = message
+	if messageSaved == '':
+            messageSaved = message
         else:
-            os.environ["history"] = os.environ["history"] + '</br>' + 'Message: %s'%message   
-	page = message_template % (os.environ["history"])
+            messageSaved = messageSaved + '</br>' + 'Message: %s'%message   
+	page = message_template % (messageSaved)
     else:
         page = notfound_template % path
     return [ page ] # list of strings - must return iterable, not just a string
