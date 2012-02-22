@@ -60,10 +60,7 @@ def application(environ, start_response):
     elif path == '/echo_wsgi.py':
         # get message from URL query string, parse_qs returns a list for each key
         message = urlparse.parse_qs(environ['QUERY_STRING'])['message'][0]    
-	if messageSaved == '':
-            messageSaved = message
-        else:
-            messageSaved = messageSaved + '</br>' + 'Message: %s'%message   
+	messageSaved = messageSaved + '</br>' + 'Message: %s'%message   
 	page = message_template % (messageSaved)
     else:
         page = notfound_template % path
