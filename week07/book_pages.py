@@ -35,7 +35,7 @@ BOOK_INFO_LINE = """
 app = Flask(__name__)
 
 app.debug = True # development only - remove on production machines
-
+bookDb = bookdb.BookDB()
 # View functions generate HTTP responses including HTML pages and headers
 
 @app.route('/book_pages.py') #decorate another view function.
@@ -43,22 +43,19 @@ def message_page():
     # Flask Quickstart suggests request.form should work, but here it is empty
     # Flask converts return string to HTML page
     #return 'Message: %s' % request.args['message']  # args is a dictionary. 'message' is the key.
-    bookDb = bookdb.BookDB()
     bookTitle = []
     for titleDict in bookDb.titles():
         title = titleDict['title']
         bookTitle.append(title)
-    #return book_page % bookdb.titles
     return '\n'.join([BOOK_TITLE_LINE % (e, e) for e in bookTitle])
 
 @app.route('/<bookTitle>')
 def show_user_profile(bookTitle):
-    bookDb2 = bookdb.BookDB()
     info = ''
-    for titleDict in bookDb2.titles():
+    for titleDict in bookDb.titles():
         if titleDict['title'] == bookTitle:
             id = titleDict['id']
-            bookInfoDict = bookDb2.title_info(id)
+            bookInfoDict = bookDb.title_info(id)
             for key in bookInfoDict:
                info = info + key + ":" + bookInfoDict[key] + '<br>\n'
     return BOOK_INFO_LINE % (bookTitle, info)
