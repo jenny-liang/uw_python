@@ -13,7 +13,7 @@ import bookdb
 BOOK_TITLE_LINE="""<html>
 <head><title>Books</title></head>
 <body>
-<a href="%s">%s</a><br>
+%s
 </body>
 </html>
 """
@@ -44,10 +44,13 @@ def message_page():
     # Flask converts return string to HTML page
     #return 'Message: %s' % request.args['message']  # args is a dictionary. 'message' is the key.
     bookTitle = []
+    bookTitleLines = ''
     for titleDict in bookDb.titles():
         title = titleDict['title']
         bookTitle.append(title)
-    return '\n'.join([BOOK_TITLE_LINE % (e, e) for e in bookTitle])
+    for b in bookTitle:
+        bookTitleLines = bookTitleLines + "<a href='%s'>%s</a>" %(b, b) + "\n<br>"
+    return bookTitleLines
 
 @app.route('/<bookTitle>')
 def show_user_profile(bookTitle):
@@ -59,7 +62,6 @@ def show_user_profile(bookTitle):
             for key in bookInfoDict:
                info = info + key + ":" + bookInfoDict[key] + '<br>\n'
     return BOOK_INFO_LINE % (bookTitle, info)
-
 
 # No function needed for other routes - Flask will send 404 page
 
