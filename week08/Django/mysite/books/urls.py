@@ -5,7 +5,12 @@ from books.models import Info
 
 urlpatterns = patterns('',
     url(r'^$',
-        ListView.as_view(           
+        ListView.as_view(
+            queryset=Book.objects.order_by('-pub_date')[:5],
+            #context_object_name='latest_book_list',
+            template_name='books/index.html')),
+    url(r'^$',
+        ListView.as_view(   
 	    model = Book, 
 	    queryset=Book.objects.order_by('bookTitle')[:5],
             template_name='books/index.html')),
